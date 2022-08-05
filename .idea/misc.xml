@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/custom_input.xml" value="0.1" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_baseline_password_24.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_check.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_email.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_estate.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_estate_id.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_home_address.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/drawable/ic_person.xml" value="0.2765" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/layout/fragment_choose_registration.xml" value="0.5" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/layout/fragment_estate_registration.xml" value="0.33" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/Ibukun Okunoye/AndroidStudioProjects/HelpMeet/app/src/main/res/layout/fragment_resident_registration.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
