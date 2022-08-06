@@ -7,6 +7,6 @@ import com.example.helpmeet.R
 class EstateRegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_registration)
+        setContentView(R.layout.activity_estate_registration)
     }
 }
