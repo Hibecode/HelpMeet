@@ -1,7 +1,9 @@
 package com.example.helpmeet.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import com.example.helpmeet.R
 import com.example.helpmeet.databinding.ActivityResidentRegistrationBinding
 
@@ -14,5 +16,12 @@ class ResidentRegistrationActivity : AppCompatActivity() {
         binding = ActivityResidentRegistrationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.residentContinueButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, "something")
+            }
+            startActivity(intent)
+        }
     }
 }

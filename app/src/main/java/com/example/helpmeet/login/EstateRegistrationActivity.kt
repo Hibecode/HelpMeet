@@ -17,6 +17,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.estateContinueButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, "something")
+            }
+            startActivity(intent)
+        }
 
 
     }
