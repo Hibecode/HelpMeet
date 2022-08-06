@@ -1,12 +1,23 @@
 package com.example.helpmeet.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import com.example.helpmeet.R
+import com.example.helpmeet.databinding.ActivityEstateRegistrationBinding
 
 class EstateRegistrationActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEstateRegistrationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_estate_registration)
+        binding = ActivityEstateRegistrationBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+
+
     }
 }
