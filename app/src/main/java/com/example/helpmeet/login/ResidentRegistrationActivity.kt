@@ -23,5 +23,12 @@ class ResidentRegistrationActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+        binding.tvLoginText.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java).apply {
+                putExtra(AlarmClock.EXTRA_MESSAGE, "something")
+            }
+            startActivity(intent)
+        }
     }
 }
