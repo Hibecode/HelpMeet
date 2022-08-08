@@ -11,4 +11,5 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="terms">By creating an account you agree to our Term of Service</string>
     <string name="estate_address">Estate Address</string>
+    <string name="home">HOME</string>
 </resources>
