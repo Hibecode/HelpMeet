@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
-            android:text="Require information to account creation"
+            android:text="Required information to account creation"
             android:textColor="@color/primaryColor"
             android:textSize="16sp"
             android:textStyle="bold"
