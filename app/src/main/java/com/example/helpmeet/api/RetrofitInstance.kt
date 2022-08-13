@@ -1,6 +1,7 @@
 package com.example.helpmeet.api
 
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,11 +18,19 @@ class RetrofitInstance {
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(logging)
-                .build()
+                .retryOnConnectionFailure(true)
+
+            val client2 = client.addInterceptor { chain ->
+                val request: Request = chain.request().newBuilder()
+                    .addHeader("Connection", "close")
+                    .addHeader("Transfer-Encoding", "chunked")
+                    .build()
+                chain.proceed(request)
+            }
 
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(client)
+                .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -33,3 +42,19 @@ class RetrofitInstance {
 
     }
 }
+
+
+
+/*
+object RetrofitInstance {
+
+    private const val BASE_URL = "https://help-meet.herokuapp.com"
+
+    val api: HelpMeetApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(HelpMeetApi::class.java)
+    }
+}*/

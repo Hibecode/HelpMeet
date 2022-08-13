@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -36,6 +37,8 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
 
 
+
+
         binding.btnEstateContinue.setOnClickListener {
             var fullName = binding.etFullname.text.toString()
             var email = binding.etEmail.text.toString()
@@ -45,18 +48,22 @@ class EstateRegistrationActivity : AppCompatActivity() {
             var password = binding.etPassword.text.toString()
             var confirmPassword = binding.etConfirmPassword.text.toString()
 
-            var estateRegData = Estate(estate_address = estateAddress, estate_admin = EstateAdmin(email, password),
-                estate_country = estateCountry, estate_name = estateName)
+            var estateRegData = Estate(estateName,
+                estateAddress, estateCountry, EstateAdmin(email, password))
 
             viewModel.registerEstate(estateRegData)
 
             viewModel.estateRegResponse.observe(this, Observer { response ->
                 if(response.isSuccessful){
-                    Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show()
+                    Log.d("registration", response.code().toString())
+//                    Toast.makeText(this, /*"Registration Successful"*/response.body().toString(), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this, response.message(), Toast.LENGTH_LONG).show()
+                    Log.d("registration", response.code().toString())
+//                    Toast.makeText(this, response.body().toString()/*"Unsuccessful"*/, Toast.LENGTH_LONG).show()
                 }
             })
+
+
 
 
 
