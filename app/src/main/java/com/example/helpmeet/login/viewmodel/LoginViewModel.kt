@@ -12,7 +12,7 @@ class LoginViewModel(): ViewModel() {
 
     val estateRegResponse: MutableLiveData<Response<Estate>> = MutableLiveData()
 
-    fun getExhibit(estateReg: Estate) = viewModelScope.launch {
+    fun registerEstate(estateReg: Estate) = viewModelScope.launch {
         val response = RetrofitInstance.api.registerEstate(estateReg)
         estateRegResponse.value = response
     }
