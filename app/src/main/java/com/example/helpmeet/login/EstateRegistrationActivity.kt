@@ -16,7 +16,19 @@ class EstateRegistrationActivity : AppCompatActivity() {
         binding = ActivityEstateRegistrationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        setNav()
 
+
+
+
+    }
+
+
+
+
+
+    // Set Navigation for the Continue and Login text buttons
+    fun setNav() {
         binding.estateContinueButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java).apply {
                 putExtra(AlarmClock.EXTRA_MESSAGE, "something")
@@ -30,7 +42,5 @@ class EstateRegistrationActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
-
     }
 }
