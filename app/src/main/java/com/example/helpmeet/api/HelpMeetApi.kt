@@ -8,7 +8,7 @@ import retrofit2.http.POST
 interface HelpMeetApi {
 
     @POST("/api/v1/estate/registration")
-    suspend fun registerUser(
+    suspend fun registerEstate(
         @Body estateRegData: Estate
     ): Response<Estate>
 }

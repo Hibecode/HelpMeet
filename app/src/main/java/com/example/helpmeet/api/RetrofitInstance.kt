@@ -27,9 +27,9 @@ class RetrofitInstance {
 
         }
 
-        /*val api: HelpMeetApi by lazy {
-            retrofit.create(AlbumApi::class.java)
-        }*/
+        val api: HelpMeetApi by lazy {
+            retrofit.create(HelpMeetApi::class.java)
+        }
 
     }
 }
