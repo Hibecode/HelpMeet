@@ -75,12 +75,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
     // Set Navigation for the Continue and Login text buttons
     fun setNav() {
-        binding.btnEstateContinue.setOnClickListener {
+        /*binding.btnEstateContinue.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java).apply {
                 putExtra(AlarmClock.EXTRA_MESSAGE, "something")
             }
             startActivity(intent)
-        }
+        }*/
 
         binding.tvLoginText.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java).apply {
