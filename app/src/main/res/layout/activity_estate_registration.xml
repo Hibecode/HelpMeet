@@ -40,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <EditText
-            android:id="@+id/textView"
+            android:id="@+id/etFullname"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="28dp"
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <EditText
-            android:id="@+id/textView4"
+            android:id="@+id/etPassword"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -69,10 +69,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateCountry" />
 
         <EditText
-            android:id="@+id/textView8"
+            android:id="@+id/etConfirmPassword"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -86,10 +86,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
         <EditText
-            android:id="@+id/textView5"
+            android:id="@+id/etEstateAddress"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -103,10 +103,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateName" />
 
         <EditText
-            android:id="@+id/textView10"
+            android:id="@+id/etEstateCountry"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -119,10 +119,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateAddress" />
 
         <EditText
-            android:id="@+id/textView6"
+            android:id="@+id/etEstateName"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -135,10 +135,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
         <EditText
-            android:id="@+id/textView7"
+            android:id="@+id/etEmail"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
@@ -152,10 +152,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/etFullname" />
 
         <Button
-            android:id="@+id/estateContinueButton"
+            android:id="@+id/btnEstateContinue"
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginTop="24dp"
@@ -165,7 +165,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.531"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
 
         <TextView
             android:id="@+id/textView13"
@@ -178,7 +178,7 @@
             app:drawableStartCompat="@drawable/ic_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/estateContinueButton" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEstateContinue" />
 
         <TextView
             android:id="@+id/textView9"
