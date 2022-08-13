@@ -1,10 +1,11 @@
 package com.example.helpmeet.api
 
+import com.example.helpmeet.models.Estate
 import retrofit2.Response
-import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface HelpMeetApi {
 
-    /*@GET("/us/rss/topalbums/limit=100/json")
-    suspend fun getTopAlbums(): Response<TopAlbums>*/
+    @POST("/api/v1/estate/registration")
+    suspend fun registerUser(): Response<Estate>
 }

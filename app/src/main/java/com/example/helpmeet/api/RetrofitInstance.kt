@@ -9,7 +9,7 @@ class RetrofitInstance {
 
     companion object {
 
-        private const val BASE_URL = "https://itunes.apple.com"
+        private const val BASE_URL = "https://help-meet.herokuapp.com"
 
         private val retrofit by lazy {
             val logging = HttpLoggingInterceptor()
