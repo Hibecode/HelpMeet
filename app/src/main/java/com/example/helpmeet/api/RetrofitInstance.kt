@@ -20,7 +20,7 @@ class RetrofitInstance {
                 .addInterceptor(logging)
                 .retryOnConnectionFailure(true)
 
-            val client2 = client.addInterceptor { chain ->
+            /*val client2 = */client.addInterceptor { chain ->
                 val request: Request = chain.request().newBuilder()
                     .addHeader("Connection", "close")
                     .addHeader("Transfer-Encoding", "chunked")
