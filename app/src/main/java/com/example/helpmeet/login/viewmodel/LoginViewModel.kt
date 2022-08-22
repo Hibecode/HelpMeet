@@ -10,15 +10,56 @@ import kotlinx.coroutines.launch
 import com.example.helpmeet.api.RetrofitInstance
 import com.example.helpmeet.models.Estate
 import retrofit2.Response
+import java.io.IOException
 
 class LoginViewModel(): ViewModel() {
 
     val estateRegResponse: MutableLiveData<Response<Estate>> = MutableLiveData()
+    val estateListResponse: MutableLiveData<Response<List<Estate>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
         val response = RetrofitInstance.api.registerEstate(estateReg)
         estateRegResponse.value = response
     }
+
+    fun getEstateList() = viewModelScope.launch {
+        val response = RetrofitInstance.api.getEstateList()
+        estateListResponse.value = response
+    }
+
+    /*private suspend fun safeAlbumCall() {
+        albumResponse.postValue(Resource.Loading())
+        try {
+            if (hasInternetConnection()) {
+                val response = repository.getTopAlbums()
+                albumResponse.postValue(handleAlbumResponse(response))
+            } else {
+                albumResponse.postValue(Resource.Error("No Internet connection"))
+            }
+        } catch (t: Throwable) {
+            when(t) {
+                is IOException -> albumResponse.postValue(Resource.Error("Network Failure"))
+                else -> albumResponse.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private suspend fun safeHomeAlbumCall() {
+        albumResponse.postValue(Resource.Loading())
+        try {
+            if (hasInternetConnection()) {
+                val response = repository.getTopAlbums()
+                albumResponse.postValue(handleAlbumResponse(response))
+            } else {
+                albumResponse.postValue(Resource.Error("No Internet connection"))
+            }
+        } catch (t: Throwable) {
+            when(t) {
+                is IOException -> albumResponse.postValue(Resource.Error("Network Failure"))
+                else -> albumResponse.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }*/
 
 
    /* private fun hasInternetConnection(): Boolean {

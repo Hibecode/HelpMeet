@@ -5,6 +5,7 @@ import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RetrofitInstance {
 
@@ -17,20 +18,24 @@ class RetrofitInstance {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
 
             val client = OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                .readTimeout(5, TimeUnit.MINUTES) // read timeout
                 .addInterceptor(logging)
                 .retryOnConnectionFailure(true)
+                .build()
 
-            /*val client2 = */client.addInterceptor { chain ->
+            /*val client2 = *//*client.addInterceptor { chain ->
                 val request: Request = chain.request().newBuilder()
                     .addHeader("Connection", "close")
                     .addHeader("Transfer-Encoding", "chunked")
                     .build()
                 chain.proceed(request)
-            }
+            }*/
 
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(client.build())
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
