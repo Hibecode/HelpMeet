@@ -1,6 +1,7 @@
 package com.example.helpmeet.api
 
 import com.example.helpmeet.models.Estate
+import com.example.helpmeet.models.SavedEstateDetails
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,5 +18,5 @@ interface HelpMeetApi {
     @GET("/api/v1/estate/all")
     suspend fun getEstateList(
         @Query("page") page: Int = 31703080
-    ) : Response<List<Estate>>
+    ) : Response<List<SavedEstateDetails>>
 }

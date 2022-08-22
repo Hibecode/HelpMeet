@@ -9,13 +9,14 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.example.helpmeet.api.RetrofitInstance
 import com.example.helpmeet.models.Estate
+import com.example.helpmeet.models.SavedEstateDetails
 import retrofit2.Response
 import java.io.IOException
 
 class LoginViewModel(): ViewModel() {
 
     val estateRegResponse: MutableLiveData<Response<Estate>> = MutableLiveData()
-    val estateListResponse: MutableLiveData<Response<List<Estate>>> = MutableLiveData()
+    val estateListResponse: MutableLiveData<Response<List<SavedEstateDetails>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
         val response = RetrofitInstance.api.registerEstate(estateReg)
