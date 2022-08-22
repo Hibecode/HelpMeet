@@ -26,7 +26,7 @@ class TestActivity : AppCompatActivity() {
         viewModel.getEstateList()
         viewModel.estateListResponse.observe(this) { response ->
             if (response.isSuccessful) {
-                binding.testText.text = response.body()?.get(2).toString()
+                binding.testText.text = response.body()?.get(2)?.estate_address
             } else {
                 Log.d("test", response.message().toString())
             }
