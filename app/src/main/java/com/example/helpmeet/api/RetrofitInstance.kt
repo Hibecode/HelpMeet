@@ -11,7 +11,7 @@ class RetrofitInstance {
 
     companion object {
 
-        private const val BASE_URL = "https://help-meet.herokuapp.com"
+        private const val BASE_URL = "https://help-meet.herokuapp.com/"
 
 
 

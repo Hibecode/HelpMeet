@@ -15,6 +15,7 @@ import com.example.helpmeet.login.viewmodel.LoginViewModel
 import com.example.helpmeet.login.viewmodel.LoginViewModelFactory
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.EstateAdmin
+import com.example.helpmeet.utils.Resource
 
 class EstateRegistrationActivity : AppCompatActivity() {
 
@@ -37,8 +38,6 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
 
 
-
-
         binding.btnEstateContinue.setOnClickListener {
             var fullName = binding.etFullname.text.toString()
             var email = binding.etEmail.text.toString()
@@ -53,17 +52,29 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
             viewModel.registerEstate(estateRegData)
 
-            /*viewModel.estateRegResponse.observe(this, Observer { response ->
-                if(response.isSuccessful){
+
+            viewModel.estateRegResponse.observe(this, Observer { response ->
+                when(response) {
+                    is Resource.Success -> {
+                        Log.d("registration", response.message.toString())
+                        Log.d("registration", response.data.toString())
+                    }
+                    is Resource.Error -> {
+                        Log.d("registration", response.message.toString())
+                    }
+                    is Resource.Loading -> Toast.makeText(this,"", Toast.LENGTH_LONG).show()
+                }
+
+                /*if(response.isSuccessful){
                     Log.d("registration", response.message().toString())
                     Log.d("registration", response.code().toString())
-                    Toast.makeText(this, *//*"Registration Successful"*//*response.body().toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Registration Successful"response.body().toString(), Toast.LENGTH_LONG).show()
                 } else {
                     Log.d("registration", response.code().toString())
                     Log.d("registration", response.code().toString())
-                    Toast.makeText(this, response.body().toString()*//*"Unsuccessful"*//*, Toast.LENGTH_LONG).show()
-                }
-            })*/
+                    Toast.makeText(this, response.body().toString()"Unsuccessful", Toast.LENGTH_LONG).show()
+                }*/
+            })
 
 
 

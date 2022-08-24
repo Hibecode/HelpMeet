@@ -10,12 +10,12 @@ import retrofit2.http.Query
 
 interface HelpMeetApi {
 
-    @POST("/api/v1/estate/registration")
+    @POST("api/v1/estate/registration/")
     suspend fun registerEstate(
         @Body estateRegData: Estate
     ): Response<Estate>
 
-    @GET("/api/v1/estate/all")
+    @GET("/api/v1/estate/all/")
     suspend fun getEstateList(
         @Query("page") page: Int = 31703080
     ) : Response<List<SavedEstateDetails>>

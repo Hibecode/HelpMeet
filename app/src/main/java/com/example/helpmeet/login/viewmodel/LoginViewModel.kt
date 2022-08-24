@@ -24,8 +24,7 @@ class LoginViewModel(
     val estateListResponse: MutableLiveData<Response<List<SavedEstateDetails>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
-        val response = RetrofitInstance.api.registerEstate(estateReg)
-        //estateRegResponse.value = response
+        safeEstateRegCall(estateReg)
     }
 
     fun getEstateList() = viewModelScope.launch {
@@ -33,27 +32,30 @@ class LoginViewModel(
         estateListResponse.value = response
     }
 
-    /*private fun handleEstateReg(response: Response<Estate>): Resource<Estate> {
+    private fun handleEstateReg(response: Response<Estate>): Resource<Estate> {
         if(response.isSuccessful) {
-            res
+            response.body()?.let{
+                return Resource.Success(it)
+            }
         }
-    }*/
+        return Resource.Error(response.message())
+    }
 
 
 
-
-    private suspend fun safeHomeAlbumCall() {
+    private suspend fun safeEstateRegCall(estateReg: Estate) {
         try {
             if (hasInternetConnection()) {
-                val response = repository.getTopAlbums()
-                albumResponse.postValue(handleAlbumResponse(response))
+                val response = RetrofitInstance.api.registerEstate(estateReg)
+                estateRegResponse.postValue(handleEstateReg(response))
+
             } else {
-                albumResponse.postValue(Resource.Error("No Internet connection"))
+                estateRegResponse.postValue(Resource.Error("No Internet connection"))
             }
         } catch (t: Throwable) {
-            val value = when (t) {
-                is IOException -> albumResponse.postValue(Resource.Error("Network Failure"))
-                else -> albumResponse.postValue(Resource.Error("Conversion Error"))
+            when (t) {
+                is IOException -> estateRegResponse.postValue(Resource.Error("Network Failure"))
+                else -> estateRegResponse.postValue(Resource.Error("Conversion Error"))
             }
         }
     }
