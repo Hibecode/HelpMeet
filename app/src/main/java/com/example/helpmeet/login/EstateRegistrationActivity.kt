@@ -29,7 +29,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
         setContentView(view)
         setNav()
 
-        val viewModelFactory = LoginViewModelFactory()
+        val viewModelFactory = LoginViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
 
@@ -53,17 +53,17 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
             viewModel.registerEstate(estateRegData)
 
-            viewModel.estateRegResponse.observe(this, Observer { response ->
+            /*viewModel.estateRegResponse.observe(this, Observer { response ->
                 if(response.isSuccessful){
                     Log.d("registration", response.message().toString())
                     Log.d("registration", response.code().toString())
-//                    Toast.makeText(this, /*"Registration Successful"*/response.body().toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, *//*"Registration Successful"*//*response.body().toString(), Toast.LENGTH_LONG).show()
                 } else {
                     Log.d("registration", response.code().toString())
                     Log.d("registration", response.code().toString())
-//                    Toast.makeText(this, response.body().toString()/*"Unsuccessful"*/, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, response.body().toString()*//*"Unsuccessful"*//*, Toast.LENGTH_LONG).show()
                 }
-            })
+            })*/
 
 
 

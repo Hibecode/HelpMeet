@@ -1,26 +1,31 @@
 package com.example.helpmeet.login.viewmodel
 
+import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.example.helpmeet.api.RetrofitInstance
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.SavedEstateDetails
+import com.example.helpmeet.utils.MyApp
+import com.example.helpmeet.utils.Resource
 import retrofit2.Response
 import java.io.IOException
 
-class LoginViewModel(): ViewModel() {
+class LoginViewModel(
+    app: Application
+): AndroidViewModel(app) {
 
-    val estateRegResponse: MutableLiveData<Response<Estate>> = MutableLiveData()
+    val estateRegResponse: MutableLiveData<Resource<Estate>> = MutableLiveData()
     val estateListResponse: MutableLiveData<Response<List<SavedEstateDetails>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
         val response = RetrofitInstance.api.registerEstate(estateReg)
-        estateRegResponse.value = response
+        //estateRegResponse.value = response
     }
 
     fun getEstateList() = viewModelScope.launch {
@@ -28,10 +33,16 @@ class LoginViewModel(): ViewModel() {
         estateListResponse.value = response
     }
 
+    /*private fun handleEstateReg(response: Response<Estate>): Resource<Estate> {
+        if(response.isSuccessful) {
+            res
+        }
+    }*/
 
 
-    /*private suspend fun safeAlbumCall() {
-        albumResponse.postValue(Resource.Loading())
+
+
+    private suspend fun safeHomeAlbumCall() {
         try {
             if (hasInternetConnection()) {
                 val response = repository.getTopAlbums()
@@ -40,33 +51,16 @@ class LoginViewModel(): ViewModel() {
                 albumResponse.postValue(Resource.Error("No Internet connection"))
             }
         } catch (t: Throwable) {
-            when(t) {
+            val value = when (t) {
                 is IOException -> albumResponse.postValue(Resource.Error("Network Failure"))
                 else -> albumResponse.postValue(Resource.Error("Conversion Error"))
             }
         }
     }
 
-    private suspend fun safeHomeAlbumCall() {
-        albumResponse.postValue(Resource.Loading())
-        try {
-            if (hasInternetConnection()) {
-                val response = repository.getTopAlbums()
-                albumResponse.postValue(handleAlbumResponse(response))
-            } else {
-                albumResponse.postValue(Resource.Error("No Internet connection"))
-            }
-        } catch (t: Throwable) {
-            when(t) {
-                is IOException -> albumResponse.postValue(Resource.Error("Network Failure"))
-                else -> albumResponse.postValue(Resource.Error("Conversion Error"))
-            }
-        }
-    }*/
 
-
-   /* private fun hasInternetConnection(): Boolean {
-        val connectivityManager = getApplication<AlbumApplication>().getSystemService(
+    private fun hasInternetConnection(): Boolean {
+        val connectivityManager = getApplication<MyApp>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetwork ?: return false
@@ -78,5 +72,5 @@ class LoginViewModel(): ViewModel() {
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
             else -> false
         }
-    }*/
+    }
 }

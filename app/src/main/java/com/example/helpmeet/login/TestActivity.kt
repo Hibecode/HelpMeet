@@ -20,7 +20,7 @@ class TestActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val viewModelFactory = LoginViewModelFactory()
+        val viewModelFactory = LoginViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
         viewModel.getEstateList()
