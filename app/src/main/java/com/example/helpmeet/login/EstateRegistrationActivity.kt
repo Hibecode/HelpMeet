@@ -55,10 +55,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
             viewModel.estateRegResponse.observe(this, Observer { response ->
                 if(response.isSuccessful){
-                    //Log.d("registration", response.message().toString())
+                    Log.d("registration", response.message().toString())
+                    Log.d("registration", response.code().toString())
 //                    Toast.makeText(this, /*"Registration Successful"*/response.body().toString(), Toast.LENGTH_LONG).show()
                 } else {
-                    //Log.d("registration", response.message().toString())
+                    Log.d("registration", response.code().toString())
+                    Log.d("registration", response.code().toString())
 //                    Toast.makeText(this, response.body().toString()/*"Unsuccessful"*/, Toast.LENGTH_LONG).show()
                 }
             })

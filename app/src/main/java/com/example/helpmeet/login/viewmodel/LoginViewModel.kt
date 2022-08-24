@@ -28,6 +28,8 @@ class LoginViewModel(): ViewModel() {
         estateListResponse.value = response
     }
 
+
+
     /*private suspend fun safeAlbumCall() {
         albumResponse.postValue(Resource.Loading())
         try {
