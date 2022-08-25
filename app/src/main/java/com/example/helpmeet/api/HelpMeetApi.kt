@@ -15,8 +15,15 @@ interface HelpMeetApi {
         @Body estateRegData: Estate
     ): Response<Estate>
 
+    @POST("api/v1/user/registration/")
+    suspend fun registerUser(
+        @Body estateRegData: Estate
+    ): Response<Estate>
+
     @GET("/api/v1/estate/all/")
     suspend fun getEstateList(
         @Query("page") page: Int = 31703080
     ) : Response<List<SavedEstateDetails>>
+
+
 }

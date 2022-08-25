@@ -23,7 +23,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
     }
 
 
-    fun setNav() {
+    private fun setNav() {
         binding.residentContinueButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java).apply {
                 putExtra(AlarmClock.EXTRA_MESSAGE, "something")
