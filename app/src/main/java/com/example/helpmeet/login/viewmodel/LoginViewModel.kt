@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import com.example.helpmeet.api.RetrofitInstance
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.SavedEstateDetails
+import com.example.helpmeet.models.UserRegister
 import com.example.helpmeet.utils.MyApp
 import com.example.helpmeet.utils.Resource
 import retrofit2.Response
@@ -21,6 +22,7 @@ class LoginViewModel(
 ): AndroidViewModel(app) {
 
     val estateRegResponse: MutableLiveData<Resource<Estate>> = MutableLiveData()
+    val userRegResponse: MutableLiveData<Resource<UserRegister>> = MutableLiveData()
     val estateListResponse: MutableLiveData<Response<List<SavedEstateDetails>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
