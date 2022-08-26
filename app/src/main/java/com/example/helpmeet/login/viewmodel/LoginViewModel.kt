@@ -9,11 +9,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.example.helpmeet.api.RetrofitInstance
+import com.example.helpmeet.models.ErrorResponse
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.SavedEstateDetails
 import com.example.helpmeet.models.UserRegister
 import com.example.helpmeet.utils.MyApp
 import com.example.helpmeet.utils.Resource
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Response
 import java.io.IOException
 
@@ -39,8 +42,19 @@ class LoginViewModel(
             response.body()?.let{
                 return Resource.Success(it)
             }
+        } else {
+            return try {
+                val gson = Gson()
+                val type = object : TypeToken<Response<ErrorResponse>>() {}.type
+                var errorResponse: ErrorResponse? = gson.fromJson(response.errorBody()?.charStream(), type)
+                Resource.Error(errorResponse.toString())
+            } catch (e: Exception) {
+                Resource.Error(e.message)
+            }
+
         }
-        return Resource.Error(response.message())
+        return Resource.Error(response.message().toString())
+
     }
 
 

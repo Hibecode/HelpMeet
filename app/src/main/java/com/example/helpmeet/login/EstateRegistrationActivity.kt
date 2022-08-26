@@ -56,11 +56,10 @@ class EstateRegistrationActivity : AppCompatActivity() {
             viewModel.estateRegResponse.observe(this, Observer { response ->
                 when(response) {
                     is Resource.Success -> {
-                        Log.d("registration", response.message.toString())
-                        Log.d("registration", response.data.toString())
+                        Log.d("regtest", response.data.toString())
                     }
                     is Resource.Error -> {
-                        Log.d("registration", response.message.toString())
+                        Log.d("errortest", response.message.toString())
                     }
                     is Resource.Loading -> Toast.makeText(this,"", Toast.LENGTH_LONG).show()
                 }
