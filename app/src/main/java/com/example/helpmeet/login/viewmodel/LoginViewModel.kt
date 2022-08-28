@@ -56,7 +56,7 @@ class LoginViewModel(
                 Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))
                 //Resource.Error(errorResponse.toString())
             } catch (e: Exception) {
-                Resource.Error("${e.message} from catchpointboy")
+                Resource.Error("${e.message} from catchpoint boy")
             }
 
         }
