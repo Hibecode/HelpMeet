@@ -36,6 +36,10 @@ class LoginViewModel(
         safeEstateRegCall(estateReg)
     }
 
+    fun registerUser(userReg: UserRegister) = viewModelScope.launch {
+        safeUserRegCall()
+    }
+
     fun getEstateList() = viewModelScope.launch {
         val response = RetrofitInstance.api.getEstateList()
         estateListResponse.value = response
