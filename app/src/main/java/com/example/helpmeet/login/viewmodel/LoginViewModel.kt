@@ -68,6 +68,24 @@ class LoginViewModel(
 
     }
 
+    private suspend fun safeUserRegCall(userReg: UserRegister) {
+        try {
+            if (hasInternetConnection()) {
+                val response = RetrofitInstance.api.registerUser(userReg)
+                //estateRegResponse.postValue(handleUserReg(response))
+
+            } else {
+                userRegResponse.postValue(Resource.Error("No Internet connection"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> userRegResponse.postValue(Resource.Error("Network Failure"))
+                else -> userRegResponse.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+
 
 
     private suspend fun safeEstateRegCall(estateReg: Estate) {
