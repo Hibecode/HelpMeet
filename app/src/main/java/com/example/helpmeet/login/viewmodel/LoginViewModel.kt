@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.widget.Toast
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -21,7 +21,6 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException
-import java.security.AccessController.getContext
 
 
 class LoginViewModel(
@@ -37,7 +36,7 @@ class LoginViewModel(
     }
 
     fun registerUser(userReg: UserRegister) = viewModelScope.launch {
-        safeUserRegCall()
+        safeUserRegCall(userReg)
     }
 
     fun getEstateList() = viewModelScope.launch {
@@ -50,13 +49,16 @@ class LoginViewModel(
             response.body()?.let{
                 return Resource.Success(it)
             }
-        } else {
+        } else if (response.code() == 400){
             return try {
                 val gson = Gson()
-                /*val type = object : TypeToken<Response<ErrorResponse>>() {}.type
-                var errorResponse: ErrorResponse? = gson.fromJson(response.errorBody()?.charStream(), type)*/
+                val type = object : TypeToken<Response<Estate>>() {}.type
+                var errorResponse: Estate? = gson.fromJson(response.errorBody()?.charStream(), type)
+
+                val error = gson.fromJson(response.errorBody()!!.string(), Estate::class.java)
 
                 val jObjError = JSONObject(response.errorBody()!!.string())
+                Log.d("vmtestes", error.estate_address[0].toString())
                 Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))
                 //Resource.Error(errorResponse.toString())
             } catch (e: Exception) {
