@@ -53,25 +53,27 @@ class EstateRegistrationActivity : AppCompatActivity() {
             viewModel.registerEstate(estateRegData)
 
 
-            viewModel.estateRegResponse.observe(this, Observer { response ->
-                when(response) {
-                    is Resource.Success -> {
-                        Log.d("regtest", response.data.toString())
-                    }
-                    is Resource.Error -> {
-                        Log.d("errortest", response.message.toString())
-                    }
-                    is Resource.Loading -> Toast.makeText(this,"", Toast.LENGTH_LONG).show()
-                }
 
-
-            })
 
 
 
 
 
         }
+
+        viewModel.estateRegResponse.observe(this, Observer { response ->
+            when(response) {
+                is Resource.Success -> {
+                    Log.d("regtest", response.data.toString())
+                }
+                is Resource.Error -> {
+                    Log.d("errortest", response.message.toString())
+                }
+                is Resource.Loading -> Toast.makeText(this,"", Toast.LENGTH_LONG).show()
+            }
+
+
+        })
 
 
 
