@@ -51,16 +51,26 @@ class LoginViewModel(
             }
         } else /*if (response.code() == 400)*/{
             return try {
-                val gson = Gson()
-                /*val type = object : TypeToken<Response<Estate>>() {}.type
+                /*val gson = Gson()
+                val type = object : TypeToken<Response<Estate>>() {}.type
                 var errorResponse: Estate? = gson.fromJson(response.errorBody()?.charStream(), type)
+                val error = gson.fromJson(response.raw(), Estate::class.java)
 */
-                /*val error = gson.fromJson(response.raw(), Estate::class.java)
 
-                val jObjError = JSONObject(response.errorBody()!!.string())
+                /*val jObjError = JSONObject(response.errorBody()!!.string())
                 Log.d("vmtestes", error.estate_address[0].toString())
                 Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))*/
-                Log.d("vmtestes", response.errorBody()?.close().toString())
+
+                val responseString = response.errorBody()?.string()
+                val model_list = listOf("estate_name", "estate_address", "estate_country")
+
+                for (i in model_list) {
+                    var errorString = JSONObject(responseString ?: "").getString(i)
+                    Log.d("vmtestes", errorString.toString())
+                }
+
+
+
                 Resource.Error(response.body().toString())
             } catch (e: Exception) {
                 Resource.Error("${e.message} from catchpoint boy")
