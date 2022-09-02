@@ -34,18 +34,19 @@ class EstateRegistrationActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
 
+        var email = binding.etEmail.text.toString().trim()
+        var estateName = binding.etEstateName.text.toString().trim()
+        var estateAddress = binding.etEstateAddress.text.toString().trim()
+        var estateCountry = binding.etEstateCountry.text.toString().trim()
+        var password = binding.etPassword.text.toString().trim()
+        var confirmPassword = binding.etConfirmPassword.text.toString().trim()
 
+        if(email.isEmpty())
 
 
 
         binding.btnEstateContinue.setOnClickListener {
-            var fullName = binding.etFullname.text.toString()
-            var email = binding.etEmail.text.toString()
-            var estateName = binding.etEstateName.text.toString()
-            var estateAddress = binding.etEstateAddress.text.toString()
-            var estateCountry = binding.etEstateCountry.text.toString()
-            var password = binding.etPassword.text.toString()
-            var confirmPassword = binding.etConfirmPassword.text.toString()
+
 
             var estateRegData = Estate(estateName,
                 estateAddress, estateCountry, EstateAdmin(email, password))
