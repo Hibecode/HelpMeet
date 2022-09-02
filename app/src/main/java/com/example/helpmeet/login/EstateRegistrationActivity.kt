@@ -64,7 +64,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
         viewModel.estateRegResponse.observe(this, Observer { response ->
             when(response) {
                 is Resource.Success -> {
-
+                    Toast.makeText(this, "Account Successfully Created", Toast.LENGTH_LONG).show()
                     Log.d("regtest", response.data.toString())
                 }
                 is Resource.Error -> {
