@@ -62,16 +62,20 @@ class LoginViewModel(
                 Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))*/
 
                 val responseString = response.errorBody()?.string()
-                val model_list = listOf("estate_name", "estate_address", "estate_country")
-
+                val model_list = listOf("estate_name", "estate_address")
+                var errorStr = ""
                 for (i in model_list) {
                     var errorString = JSONObject(responseString ?: "").getString(i)
-                    Log.d("vmtestes", errorString.toString())
+                    if(errorString.isNotEmpty()){
+                        Log.d("vmtestes", errorString.toString())
+                        errorStr += errorString.toString()
+                    }
+
                 }
 
 
-
-                Resource.Error(response.body().toString())
+                Resource.Error(errorStr)
+                //Resource.Error(response.body().toString())
             } catch (e: Exception) {
                 Resource.Error("${e.message} from catchpoint boy")
             }
