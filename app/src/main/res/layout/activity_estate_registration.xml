@@ -39,121 +39,186 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-        <EditText
-            android:id="@+id/etFullname"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/custom_input"
-            android:drawableEnd="@drawable/ic_person"
-            android:hint="@string/fullname"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-        <EditText
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etPassword"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
-            android:drawableEnd="@drawable/ic_baseline_password_24"
             android:hint="@string/password"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEstateCountry" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateCountry"
 
-        <EditText
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:passwordToggleEnabled="true"
+            app:boxStrokeColor="@color/primaryColor"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
             android:drawableEnd="@drawable/ic_baseline_password_24"
             android:hint="@string/confirm_password"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/etPassword"
 
-        <EditText
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateAddress"
+
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
             android:drawableEnd="@drawable/ic_home_address"
             android:hint="@string/estate_address"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEstateName" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateName"
 
-        <EditText
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:endIconDrawable="@drawable/ic_home_address"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateCountry"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
             android:drawableEnd="@drawable/ic_home_address"
-            android:hint="Estate Country"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
+            android:hint="Estate Country Code"
             android:textAllCaps="true"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEstateAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/etEstateAddress"
 
-        <EditText
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:endIconDrawable="@drawable/ic_home_address"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateName"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
             android:drawableEnd="@drawable/ic_estate"
             android:hint="@string/estate_name"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/etEmail"
 
-        <EditText
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:endIconDrawable="@drawable/ic_home_address"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEmail"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
             android:drawableEnd="@drawable/ic_email"
             android:hint="@string/email"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etFullname" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:endIconDrawable="@drawable/ic_home_address"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <Button
             android:id="@+id/btnEstateContinue"
@@ -167,6 +232,7 @@
             app:layout_constraintHorizontal_bias="0.531"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+
 
         <TextView
             android:id="@+id/textView13"

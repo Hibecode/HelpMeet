@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -16,6 +17,7 @@ import com.example.helpmeet.login.viewmodel.LoginViewModelFactory
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.EstateAdmin
 import com.example.helpmeet.utils.Resource
+import java.util.regex.Pattern
 
 class EstateRegistrationActivity : AppCompatActivity() {
 
@@ -34,14 +36,16 @@ class EstateRegistrationActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
 
-        var email = binding.etEmail.text.toString().trim()
-        var estateName = binding.etEstateName.text.toString().trim()
-        var estateAddress = binding.etEstateAddress.text.toString().trim()
-        var estateCountry = binding.etEstateCountry.text.toString().trim()
-        var password = binding.etPassword.text.toString().trim()
-        var confirmPassword = binding.etConfirmPassword.text.toString().trim()
+        var email = binding.etEmail.editText.toString().trim()
+        var estateName = binding.etEstateName.editText.toString().trim()
+        var estateAddress = binding.etEstateAddress.editText.toString().trim()
+        var estateCountry = binding.etEstateCountry.editText.toString().trim()
+        var password = binding.etPassword.editText.toString().trim()
+        var confirmPassword = binding.etConfirmPassword.editText.toString().trim()
 
-        if(email.isEmpty())
+        /*if(email.isEmpty()){
+            Patterns.EMAIL_ADDRESS
+        }*/
 
 
 
