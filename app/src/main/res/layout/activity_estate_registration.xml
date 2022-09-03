@@ -40,7 +40,34 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textInputWidth"
+            android:layout_marginTop="20dp"
+            android:drawableEnd="@drawable/ic_email"
+            android:hint="@string/email"
+            android:textSize="@dimen/textSize"
+            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
+            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
 
+            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
+            app:boxStrokeColor="@color/primaryColor"
+            app:endIconDrawable="@drawable/ic_home_address"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etPassword"
@@ -48,7 +75,7 @@
             android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
             android:hint="@string/password"
-            android:textSize="18sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEstateCountry"
@@ -66,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
-                />
+                android:textAllCaps="false" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +106,7 @@
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_baseline_password_24"
             android:hint="@string/confirm_password"
-            android:textSize="18sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +136,7 @@
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_home_address"
             android:hint="@string/estate_address"
-            android:textSize="18sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,12 +162,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateCountry"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_home_address"
             android:hint="Estate Country Code"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEstateAddress"
@@ -157,18 +184,19 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text" />
+                android:inputType="textCapSentences|textCapWords"
+                android:textAllCaps="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateName"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/textInputWidth"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_estate"
             android:hint="@string/estate_name"
-            android:textSize="18sp"
+            android:textSize="@dimen/textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmail"
@@ -188,36 +216,6 @@
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etEmail"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:drawableEnd="@drawable/ic_email"
-            android:hint="@string/email"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-
-            app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
-            app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
-            app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
-            app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
-            app:boxStrokeColor="@color/primaryColor"
-            app:endIconDrawable="@drawable/ic_home_address"
-            app:errorEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <Button
