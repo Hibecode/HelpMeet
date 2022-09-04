@@ -24,6 +24,13 @@ class EstateRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEstateRegistrationBinding
     private lateinit var viewModel: LoginViewModel
 
+    private var email = binding.etEmail
+    private var estateName = binding.etEstateName
+    private var estateAddress = binding.etEstateAddress
+    private var estateCountry = binding.etEstateCountry
+    private var password = binding.etPassword
+    private var confirmPassword = binding.etConfirmPassword
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,16 +39,18 @@ class EstateRegistrationActivity : AppCompatActivity() {
         setContentView(view)
         setNav()
 
+        etEmail
+
         val viewModelFactory = LoginViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
 
 
-        var email = binding.etEmail.editText.toString().trim()
+        /*var email = binding.etEmail.editText.toString().trim()
         var estateName = binding.etEstateName.editText.toString().trim()
         var estateAddress = binding.etEstateAddress.editText.toString().trim()
         var estateCountry = binding.etEstateCountry.editText.toString().trim()
         var password = binding.etPassword.editText.toString().trim()
-        var confirmPassword = binding.etConfirmPassword.editText.toString().trim()
+        var confirmPassword = binding.etConfirmPassword.editText.toString().trim()*/
 
         /*if(email.isEmpty()){
             Patterns.EMAIL_ADDRESS
@@ -90,6 +99,23 @@ class EstateRegistrationActivity : AppCompatActivity() {
     }
 
 
+    private fun validateEmail(): Boolean {
+        val emailInput = email.editText?.text.toString().trim()
+
+        return if(emailInput.isEmpty()) {
+            email.error = "Field can't be empty"
+            false
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.error = "Please enter a valid email address"
+            false
+        } else{
+            email.error = null
+            true
+        }
+
+    }
+
+
 
 
 
@@ -109,4 +135,6 @@ class EstateRegistrationActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 }

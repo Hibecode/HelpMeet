@@ -223,6 +223,7 @@
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginTop="24dp"
+            android:onClick="confirmInput"
             android:text="Continue"
             android:textAllCaps="false"
             android:textSize="16sp"
