@@ -53,6 +53,8 @@
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
 
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
             app:boxStrokeColor="@color/primaryColor"
             app:endIconDrawable="@drawable/ic_home_address"
@@ -80,6 +82,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEstateCountry"
 
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
@@ -112,12 +116,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPassword"
 
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopStart="@dimen/textInputCornerRadius"
             app:boxStrokeColor="@color/primaryColor"
-            app:errorEnabled="true"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -142,6 +148,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEstateName"
 
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
@@ -172,6 +180,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEstateAddress"
 
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
@@ -201,6 +211,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etEmail"
 
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@android:color/holo_red_dark"
             app:boxCornerRadiusBottomEnd="@dimen/textInputCornerRadius"
             app:boxCornerRadiusBottomStart="@dimen/textInputCornerRadius"
             app:boxCornerRadiusTopEnd="@dimen/textInputCornerRadius"
@@ -223,7 +235,6 @@
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginTop="24dp"
-            android:onClick="confirmInput"
             android:text="Continue"
             android:textAllCaps="false"
             android:textSize="16sp"

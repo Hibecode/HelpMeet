@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -16,7 +17,10 @@ import com.example.helpmeet.login.viewmodel.LoginViewModel
 import com.example.helpmeet.login.viewmodel.LoginViewModelFactory
 import com.example.helpmeet.models.Estate
 import com.example.helpmeet.models.EstateAdmin
+import com.example.helpmeet.utils.Constants.Companion.PASSWORD_PATTERN
+import com.example.helpmeet.utils.Constants.Companion.password_warning
 import com.example.helpmeet.utils.Resource
+import com.google.android.material.textfield.TextInputLayout
 import java.util.regex.Pattern
 
 class EstateRegistrationActivity : AppCompatActivity() {
@@ -24,12 +28,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEstateRegistrationBinding
     private lateinit var viewModel: LoginViewModel
 
-    private var email = binding.etEmail
-    private var estateName = binding.etEstateName
-    private var estateAddress = binding.etEstateAddress
-    private var estateCountry = binding.etEstateCountry
-    private var password = binding.etPassword
-    private var confirmPassword = binding.etConfirmPassword
+    private lateinit var email: TextInputLayout
+    private lateinit var estateName: TextInputLayout
+    private lateinit var estateAddress: TextInputLayout
+    private lateinit var estateCountry: TextInputLayout
+    private lateinit var password: TextInputLayout
+    private lateinit var confirmPassword: TextInputLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +43,16 @@ class EstateRegistrationActivity : AppCompatActivity() {
         setContentView(view)
         setNav()
 
-        etEmail
 
         val viewModelFactory = LoginViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
+
+        email = binding.etEmail
+        estateName = binding.etEstateName
+        estateAddress = binding.etEstateAddress
+        estateCountry = binding.etEstateCountry
+        password = binding.etPassword
+        confirmPassword = binding.etConfirmPassword
 
 
         /*var email = binding.etEmail.editText.toString().trim()
@@ -61,12 +71,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
         binding.btnEstateContinue.setOnClickListener {
 
 
-            var estateRegData = Estate(estateName,
+            /*var estateRegData = Estate(estateName,
                 estateAddress, estateCountry, EstateAdmin(email, password))
 
             viewModel.registerEstate(estateRegData)
-
-
+*/
+            confirmInput()
 
 
 
@@ -83,7 +93,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
                 }
                 is Resource.Error -> {
                     Toast.makeText(this, response.message, Toast.LENGTH_LONG).show()
-                    Log.d("errortest", response.message.toString())
+                    Log.d("helperTexttest", response.message.toString())
                 }
                 is Resource.Loading -> Toast.makeText(this,"", Toast.LENGTH_LONG).show()
             }
@@ -103,15 +113,61 @@ class EstateRegistrationActivity : AppCompatActivity() {
         val emailInput = email.editText?.text.toString().trim()
 
         return if(emailInput.isEmpty()) {
+            email.helperText = "Field can't be empty"
             email.error = "Field can't be empty"
             false
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.helperText = "Please enter a valid email address"
             email.error = "Please enter a valid email address"
             false
         } else{
+            email.helperText = null
             email.error = null
             true
         }
+
+    }
+
+    private fun validatePassword(): Boolean{
+        val passwordInput = password.editText?.text.toString().trim()
+
+        return if( passwordInput.isEmpty()){
+            password.helperText = "Field can't be empty"
+            false
+        } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()){
+            password.helperText = password_warning
+            false
+        } else {
+            password.helperText = null
+            true
+        }
+    }
+
+    private fun validateConfirmPassword(): Boolean{
+        val confirmPasswordInput = confirmPassword.editText?.text.toString().trim()
+        val passwordInput = password.editText?.text.toString().trim()
+
+        return if( confirmPasswordInput.isEmpty()){
+            confirmPassword.helperText = "Field can't be empty"
+            false
+        } else if (!PASSWORD_PATTERN.matcher(confirmPasswordInput).matches()){
+            confirmPassword.helperText = "Please enter valid password"
+            false
+        } else if( confirmPasswordInput != passwordInput) {
+            confirmPassword.helperText = "Password is not the same"
+            false
+        } else {
+            confirmPassword.helperText = null
+            true
+        }
+    }
+
+    fun confirmInput(){
+        if (!validatePassword() or !validateEmail() or !validateConfirmPassword()){
+            return
+        }
+
+        Toast.makeText(this, "Didn't work", Toast.LENGTH_LONG).show()
 
     }
 
