@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.text.InputFilter
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -53,6 +54,9 @@ class EstateRegistrationActivity : AppCompatActivity() {
         estateCountry = binding.etEstateCountry
         password = binding.etPassword
         confirmPassword = binding.etConfirmPassword
+
+
+        estateCountry.editText?.filters = estateCountry.editText?.filters?.plus(InputFilter.AllCaps())
 
 
         /*var email = binding.etEmail.editText.toString().trim()
@@ -165,7 +169,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
         return if(countryCodeInput.isEmpty()){
             estateCountry.helperText = "Field can't be empty"
             false
-        } else if(!countryCodeInput.isAllUpperCase() && countryCodeInput.length != 2) {
+        } else if(!countryCodeInput.isAllUpperCase() or (countryCodeInput.length != 2)) {
             estateCountry.helperText = "Please enter a valid Country Code"
             false
         } else {
