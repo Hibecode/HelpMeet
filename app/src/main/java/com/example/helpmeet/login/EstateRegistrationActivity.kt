@@ -225,11 +225,21 @@ class EstateRegistrationActivity : AppCompatActivity() {
         val estateAddressError = "estate with this estate address already exists."
 
         if (error.contains(estateNameError)){
-            estateName.helperText = estateNameError
+            estateName.helperText = estateNameError.capitaliseFirstLetter()
+        } else if (error.contains(estateAddressError)) {
+            estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
+        } else {
+            return
         }
+
+
     }
 
+    private fun String.capitaliseFirstLetter(): String {
+        //return this.let{it.replaceFirst(it[0],it[0].uppercaseChar())}
 
+        return this.replaceFirst(this[0], this[0].uppercaseChar())
+    }
 
 
 
