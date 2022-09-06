@@ -9,10 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.helpmeet.api.RetrofitInstance
-import com.example.helpmeet.models.ErrorResponse
-import com.example.helpmeet.models.Estate
-import com.example.helpmeet.models.SavedEstateDetails
-import com.example.helpmeet.models.UserRegister
+import com.example.helpmeet.models.*
 import com.example.helpmeet.utils.MyApp
 import com.example.helpmeet.utils.Resource
 import com.google.gson.Gson
@@ -62,16 +59,24 @@ class LoginViewModel(
                 Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))*/
 
                 val responseString = response.errorBody()?.string()
-                val model_list = listOf("estate_name", "estate_address")
+                val model_list = listOf("estate_name", "estate_address", "estate_admin")
                 var errorStr = ""
                 for (i in model_list) {
                     var errorString = JSONObject(responseString ?: "").getString(i)
-                    if(errorString.isNotEmpty()){
+                    if(errorString.contains("email")){
+                        Log.d("another-one", errorString)
+                    }
+                    if(errorString.isNotEmpty() ){
                         Log.d("vmtestes", errorString.toString())
                         errorStr += errorString.toString()
                     }
 
+
                 }
+
+
+
+
 
 
                 Resource.Error(errorStr)

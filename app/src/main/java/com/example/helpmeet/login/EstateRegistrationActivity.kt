@@ -223,13 +223,21 @@ class EstateRegistrationActivity : AppCompatActivity() {
     }
 
     private fun separateErrors(error: String) {
-        val estateNameError = "estate with this estate name already exists."
+
+        if (!emailError(error) or !estateAddressError(error) or !estateNameError(error)) {
+            return
+        }
+
+        Toast.makeText(this, "Error checker didn't work", Toast.LENGTH_LONG).show()
+        /*val estateNameError = "estate with this estate name already exists."
         val estateAddressError = "estate with this estate address already exists."
         val emailError = "user with this email address already exists."
+
 
         if (error.contains(estateNameError) && error.contains(estateAddressError)) {
             estateName.helperText = estateNameError.capitaliseFirstLetter()
             estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
+            email.helperText = emailError.capitaliseFirstLetter()
         } else if (error.contains(estateNameError)){
             estateName.helperText = estateNameError.capitaliseFirstLetter()
         } else if (error.contains(estateAddressError)) {
@@ -237,10 +245,47 @@ class EstateRegistrationActivity : AppCompatActivity() {
         } else {
             estateName.helperText = null
             estateAddress.helperText = null
-        }
-
+        }*/
 
     }
+
+    private fun emailError(error: String): Boolean {
+        val emailError = "user with this email address already exists."
+
+        return if (error.contains(emailError)) {
+            email.helperText = emailError.capitaliseFirstLetter()
+            false
+        } else {
+            email.helperText = null
+            true
+        }
+    }
+
+    private fun estateNameError(error: String): Boolean {
+        val estateNameError = "estate with this estate name already exists."
+
+        return if (error.contains(estateNameError)) {
+            estateName.helperText = estateNameError.capitaliseFirstLetter()
+            false
+        } else {
+            estateName.helperText = null
+            true
+        }
+    }
+
+    private fun estateAddressError(error: String): Boolean {
+        val estateAddressError = "estate with this estate address already exists."
+
+        return if (error.contains(estateAddressError)) {
+            estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
+            false
+        } else {
+            estateAddress.helperText = null
+            true
+        }
+    }
+
+
 
     private fun String.capitaliseFirstLetter(): String {
         //return this.let{it.replaceFirst(it[0],it[0].uppercaseChar())}
