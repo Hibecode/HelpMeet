@@ -56,30 +56,19 @@ class EstateRegistrationActivity : AppCompatActivity() {
         confirmPassword = binding.etConfirmPassword
 
 
-        estateCountry.editText?.filters = estateCountry.editText?.filters?.plus(InputFilter.AllCaps())
+        //estateCountry.editText?.filters = estateCountry.editText?.filters?.plus(InputFilter.AllCaps())
 
 
-        /*var email = binding.etEmail.editText.toString().trim()
-        var estateName = binding.etEstateName.editText.toString().trim()
-        var estateAddress = binding.etEstateAddress.editText.toString().trim()
-        var estateCountry = binding.etEstateCountry.editText.toString().trim()
-        var password = binding.etPassword.editText.toString().trim()
-        var confirmPassword = binding.etConfirmPassword.editText.toString().trim()*/
 
-        /*if(email.isEmpty()){
-            Patterns.EMAIL_ADDRESS
-        }*/
+
+
 
 
 
         binding.btnEstateContinue.setOnClickListener {
 
 
-            /*var estateRegData = Estate(estateName,
-                estateAddress, estateCountry, EstateAdmin(email, password))
 
-            viewModel.registerEstate(estateRegData)
-*/
             confirmInput()
 
 
@@ -96,6 +85,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
                     Log.d("regtest", response.data.toString())
                 }
                 is Resource.Error -> {
+                    separateErrors(response.message.toString())
                     Toast.makeText(this, response.message, Toast.LENGTH_LONG).show()
                     Log.d("helperTexttest", response.message.toString())
                 }
@@ -216,20 +206,37 @@ class EstateRegistrationActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(this, "Didn't work", Toast.LENGTH_LONG).show()
+        var emailText = email.editText?.text.toString().trim()
+        var estateNameText = estateName.editText?.text.toString().trim()
+        var estateAddressText = estateAddress.editText?.text.toString().trim()
+        var estateCountryText = estateCountry.editText?.text.toString().trim()
+        var passwordText = password.editText?.text.toString().trim()
+        var confirmPasswordText = confirmPassword.editText?.text.toString().trim()
+
+
+
+        var estateRegData = Estate(estateNameText,
+            estateAddressText, estateCountryText, EstateAdmin(emailText, passwordText))
+
+        viewModel.registerEstate(estateRegData)
 
     }
 
     private fun separateErrors(error: String) {
         val estateNameError = "estate with this estate name already exists."
         val estateAddressError = "estate with this estate address already exists."
+        val emailError = "user with this email address already exists."
 
-        if (error.contains(estateNameError)){
+        if (error.contains(estateNameError) && error.contains(estateAddressError)) {
+            estateName.helperText = estateNameError.capitaliseFirstLetter()
+            estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
+        } else if (error.contains(estateNameError)){
             estateName.helperText = estateNameError.capitaliseFirstLetter()
         } else if (error.contains(estateAddressError)) {
             estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
         } else {
-            return
+            estateName.helperText = null
+            estateAddress.helperText = null
         }
 
 
