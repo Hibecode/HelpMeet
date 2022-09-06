@@ -44,7 +44,7 @@
             android:id="@+id/etEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_email"
             android:hint="@string/email"
@@ -74,7 +74,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etPassword"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/password"
             android:textSize="@dimen/textSize"
@@ -106,7 +106,7 @@
             android:id="@+id/etConfirmPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_baseline_password_24"
             android:hint="@string/confirm_password"
@@ -138,7 +138,7 @@
             android:id="@+id/etEstateAddress"
 
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_home_address"
             android:hint="@string/estate_address"
@@ -170,7 +170,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateCountry"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_home_address"
             android:hint="Estate Country Code"
@@ -202,7 +202,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEstateName"
             android:layout_width="0dp"
-            android:layout_height="@dimen/textInputWidth"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:drawableEnd="@drawable/ic_estate"
             android:hint="@string/estate_name"
