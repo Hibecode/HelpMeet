@@ -159,8 +159,56 @@ class EstateRegistrationActivity : AppCompatActivity() {
         }
     }
 
+    private fun validateCountryCode(): Boolean{
+        val countryCodeInput = estateCountry.editText?.text.toString().trim()
+
+        return if(countryCodeInput.isEmpty()){
+            estateCountry.helperText = "Field can't be empty"
+            false
+        } else if(!countryCodeInput.isAllUpperCase() && countryCodeInput.length != 2) {
+            estateCountry.helperText = "Please enter a valid Country Code"
+            false
+        } else {
+            estateCountry.helperText = null
+            true
+        }
+    }
+
+    private fun String.isAllUpperCase(): Boolean{
+         for (i in this){
+             if (i.isLowerCase()) return false
+         }
+        return true
+    }
+
+    private fun validateEstateName(): Boolean{
+        val countryCodeInput = estateCountry.editText?.text.toString().trim()
+
+        return if(countryCodeInput.isEmpty()){
+            estateCountry.helperText = "Field can't be empty"
+            false
+        }
+        else {
+            estateCountry.helperText = null
+            true
+        }
+    }
+
+    private fun validateEstateAddress(): Boolean{
+        val countryCodeInput = estateCountry.editText?.text.toString().trim()
+
+        return if(countryCodeInput.isEmpty()){
+            estateCountry.helperText = "Field can't be empty"
+            false
+        }
+        else {
+            estateCountry.helperText = null
+            true
+        }
+    }
+
     fun confirmInput(){
-        if (!validatePassword() or !validateEmail() or !validateConfirmPassword()){
+        if (!validateCountryCode() or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
             return
         }
 
