@@ -220,6 +220,17 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
     }
 
+    private fun separateErrors(error: String) {
+        val estateNameError = "estate with this estate name already exists."
+        val estateAddressError = "estate with this estate address already exists."
+
+        if (error.contains(estateNameError)){
+            estateName.helperText = estateNameError
+        }
+    }
+
+
+
 
 
 
