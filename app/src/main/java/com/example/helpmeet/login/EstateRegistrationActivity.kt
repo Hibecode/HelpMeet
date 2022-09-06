@@ -186,32 +186,32 @@ class EstateRegistrationActivity : AppCompatActivity() {
     }
 
     private fun validateEstateName(): Boolean{
-        val countryCodeInput = estateCountry.editText?.text.toString().trim()
+        val nameInput = estateName.editText?.text.toString().trim()
 
-        return if(countryCodeInput.isEmpty()){
-            estateCountry.helperText = "Field can't be empty"
+        return if(nameInput.isEmpty()){
+            estateName.helperText = "Field can't be empty"
             false
         }
         else {
-            estateCountry.helperText = null
+            estateName.helperText = null
             true
         }
     }
 
     private fun validateEstateAddress(): Boolean{
-        val countryCodeInput = estateCountry.editText?.text.toString().trim()
+        val addressInput = estateAddress.editText?.text.toString().trim()
 
-        return if(countryCodeInput.isEmpty()){
-            estateCountry.helperText = "Field can't be empty"
+        return if(addressInput.isEmpty()){
+            estateAddress.helperText = "Field can't be empty"
             false
         }
         else {
-            estateCountry.helperText = null
+            estateAddress.helperText = null
             true
         }
     }
 
-    fun confirmInput(){
+    private fun confirmInput(){
         if (!validateCountryCode() or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
             return
         }
