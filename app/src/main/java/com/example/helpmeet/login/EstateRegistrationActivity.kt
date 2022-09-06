@@ -114,15 +114,12 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
         return if(emailInput.isEmpty()) {
             email.helperText = "Field can't be empty"
-            email.error = "Field can't be empty"
             false
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             email.helperText = "Please enter a valid email address"
-            email.error = "Please enter a valid email address"
             false
         } else{
             email.helperText = null
-            email.error = null
             true
         }
 
