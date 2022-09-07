@@ -69,6 +69,8 @@ class LoginViewModel(
                     if(errorString.isNotEmpty() ){
                         Log.d("vmtestes", errorString.toString())
                         errorStr += errorString.toString()
+                    } else{
+                        continue
                     }
 
 
