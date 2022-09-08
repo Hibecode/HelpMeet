@@ -85,7 +85,8 @@ class EstateRegistrationActivity : AppCompatActivity() {
                     Log.d("regtest", response.data.toString())
                 }
                 is Resource.Error -> {
-                    separateErrors(response.message.toString())
+                    var errorMessage = response.message.toString()
+                    separateErrors(errorMessage)
                     Toast.makeText(this, response.message, Toast.LENGTH_LONG).show()
                     Log.d("helperTexttest", response.message.toString())
                 }
