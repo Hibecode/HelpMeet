@@ -56,7 +56,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
         confirmPassword = binding.etConfirmPassword
 
 
-        //estateCountry.editText?.filters = estateCountry.editText?.filters?.plus(InputFilter.AllCaps())
+        estateCountry.editText?.filters = estateCountry.editText?.filters?.plus(InputFilter.AllCaps())
 
 
 
@@ -225,7 +225,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
     private fun separateErrors(error: String) {
 
-        if (!emailError(error) or !estateAddressError(error) or !estateNameError(error)) {
+        if (!countryCodeError(error) or !emailError(error) or !estateAddressError(error) or !estateNameError(error)) {
             return
         }
 
@@ -286,6 +286,17 @@ class EstateRegistrationActivity : AppCompatActivity() {
         }
     }
 
+    private fun countryCodeError(error: String): Boolean {
+        val countryCodeError = "estate_country"
+
+        return if (error.contains(countryCodeError)) {
+            estateCountry.helperText = "Please enter a valid country code"
+            false
+        } else {
+            estateCountry.helperText = null
+            true
+        }
+    }
 
 
     private fun String.capitaliseFirstLetter(): String {
