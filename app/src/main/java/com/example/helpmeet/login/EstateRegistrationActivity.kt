@@ -203,7 +203,7 @@ class EstateRegistrationActivity : AppCompatActivity() {
     }
 
     private fun confirmInput(){
-        if (!validateCountryCode() or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
+        if (!validateEstateName() or !validateEstateAddress() or !validateCountryCode() or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
             return
         }
 
