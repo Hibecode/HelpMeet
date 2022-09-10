@@ -20,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
         setNav()
 
+
+
     }
 
 
