@@ -53,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
             when(response) {
                 is Resource.Success -> {
                     Toast.makeText(this, "WELCOME!", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, "something")
+                    }
+                    startActivity(intent)
                 }
                 is Resource.Error -> {
                     val errorMessage = response.message.toString()
@@ -131,10 +135,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun emailError(error: String): Boolean {
-        val emailError = "email"
+        val emailError = "Unable to log in with provided credentials."
 
         return if (error.contains(emailError)) {
-            email.helperText = "This email is incorrect. Try again."
+            email.helperText = emailError
             false
         } else {
             email.helperText = null
@@ -143,10 +147,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun passwordError(error: String): Boolean {
-        val passwordError = "password"
+        val passwordError = "Unable to log in with provided credentials."
 
         return if (error.contains(passwordError)) {
-            password.helperText = "This password is incorrect. Try again."
+            password.helperText = passwordError
             false
         } else {
             password.helperText = null
@@ -158,12 +162,6 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun setNav() {
-        /*binding.loginButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, "something")
-            }
-            startActivity(intent)
-        }*/
 
         binding.tvSignupText.setOnClickListener{
             val intent = Intent(this, ChooseRegistrationActivity::class.java).apply {
