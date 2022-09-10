@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import com.example.helpmeet.R
 import com.example.helpmeet.databinding.ActivityResidentRegistrationBinding
+import com.example.helpmeet.login.viewmodel.LoginViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 class ResidentRegistrationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResidentRegistrationBinding
+
+    private lateinit var viewModel: LoginViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
