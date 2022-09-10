@@ -27,7 +27,11 @@
             android:exported="false"/>
         <activity
             android:name=".login.EstateRegistrationActivity"
-            android:exported="true">
+            android:exported="false" />
+
+        <activity
+            android:name=".login.ChooseRegistrationActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,9 +39,7 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".login.ChooseRegistrationActivity"
-            android:exported="false" />
+
         <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
