@@ -83,7 +83,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
 
     }
 
-    /*private fun validateFullName(): Boolean{
+    private fun validateFullName(): Boolean{
         val fullNameInput = fullName.editText?.text.toString().trim()
 
         return if(fullNameInput.isEmpty()){
@@ -94,7 +94,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
             fullName.helperText = null
             true
         }
-    }*/
+    }
 
 
     private fun validateEmail(): Boolean {
@@ -175,7 +175,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
     }
 
     private fun confirmInput(){
-        if (!validateEstateName() or !validateHouseAddress() /*or !validateFullName()*/ or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
+        if (!validateFullName() or !validateEstateName() or !validateHouseAddress() /*or !validateFullName()*/ or !validateEmail() or !validatePassword() or !validateConfirmPassword()){
             return
         }
 
@@ -197,7 +197,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
 
     private fun separateErrors(error: String) {
 
-        if (!emailError(error) or !houseAddressError(error) or !estateNameError(error)) {
+        if (!estateIdError(error) or !emailError(error) or !houseAddressError(error) or !estateNameError(error)) {
             return
         }
 
