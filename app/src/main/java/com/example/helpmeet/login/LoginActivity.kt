@@ -18,8 +18,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        setNav()
+
+    }
 
 
+    private fun setNav() {
         binding.loginButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, "something")
@@ -33,6 +37,5 @@ class LoginActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
     }
 }
