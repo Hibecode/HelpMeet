@@ -38,12 +38,33 @@ class LoginViewModel(
         estateListResponse.value = response
     }
 
+    private fun handleUserReg(response: Response<UserRegister>): Resource<UserRegister> {
+        if(response.isSuccessful) {
+            response.body()?.let{
+                return Resource.Success(it)
+            }
+        } else {
+            //Error Response
+            return try {
+                val responseString = response.errorBody()?.string()
+                val errorStr = JSONObject(responseString ?: "").toString()
+
+                Resource.Error(errorStr)
+
+            } catch (e: Exception) {
+                Resource.Error("${e.message} ")
+            }
+        }
+        return Resource.Error(response.message().toString())
+    }
+
     private fun handleEstateReg(response: Response<Estate>): Resource<Estate> {
         if(response.isSuccessful) {
             response.body()?.let{
                 return Resource.Success(it)
             }
         } else {
+            //Error Response
             return try {
 
                 val responseString = response.errorBody()?.string()
@@ -67,7 +88,7 @@ class LoginViewModel(
         try {
             if (hasInternetConnection()) {
                 val response = RetrofitInstance.api.registerUser(userReg)
-                //estateRegResponse.postValue(handleUserReg(response))
+                userRegResponse.postValue(handleUserReg(response))
 
             } else {
                 userRegResponse.postValue(Resource.Error("No Internet connection"))
