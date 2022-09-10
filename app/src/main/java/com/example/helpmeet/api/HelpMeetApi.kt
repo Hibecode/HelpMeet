@@ -26,5 +26,10 @@ interface HelpMeetApi {
         @Query("page") page: Int = 31703080
     ) : Response<List<SavedEstateDetails>>
 
+    /*@GET("/api/v1/user/email-verifcation/:email")
+    suspend fun */
+
+
+
 
 }
