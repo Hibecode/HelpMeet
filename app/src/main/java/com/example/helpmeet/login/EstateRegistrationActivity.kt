@@ -60,21 +60,9 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
         binding.btnEstateContinue.setOnClickListener {
 
-
-
             confirmInput()
-
-
-
-
-
 
         }
 
@@ -212,7 +200,6 @@ class EstateRegistrationActivity : AppCompatActivity() {
         var estateAddressText = estateAddress.editText?.text.toString().trim()
         var estateCountryText = estateCountry.editText?.text.toString().trim()
         var passwordText = password.editText?.text.toString().trim()
-        var confirmPasswordText = confirmPassword.editText?.text.toString().trim()
 
 
 
@@ -230,23 +217,6 @@ class EstateRegistrationActivity : AppCompatActivity() {
         }
 
         Toast.makeText(this, "Error checker didn't work", Toast.LENGTH_LONG).show()
-        /*val estateNameError = "estate with this estate name already exists."
-        val estateAddressError = "estate with this estate address already exists."
-        val emailError = "user with this email address already exists."
-
-
-        if (error.contains(estateNameError) && error.contains(estateAddressError)) {
-            estateName.helperText = estateNameError.capitaliseFirstLetter()
-            estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
-            email.helperText = emailError.capitaliseFirstLetter()
-        } else if (error.contains(estateNameError)){
-            estateName.helperText = estateNameError.capitaliseFirstLetter()
-        } else if (error.contains(estateAddressError)) {
-            estateAddress.helperText = estateAddressError.capitaliseFirstLetter()
-        } else {
-            estateName.helperText = null
-            estateAddress.helperText = null
-        }*/
 
     }
 
@@ -300,8 +270,6 @@ class EstateRegistrationActivity : AppCompatActivity() {
 
 
     private fun String.capitaliseFirstLetter(): String {
-        //return this.let{it.replaceFirst(it[0],it[0].uppercaseChar())}
-
         return this.replaceFirst(this[0], this[0].uppercaseChar())
     }
 

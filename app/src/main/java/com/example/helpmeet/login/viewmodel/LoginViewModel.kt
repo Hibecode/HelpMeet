@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,8 +11,6 @@ import com.example.helpmeet.api.RetrofitInstance
 import com.example.helpmeet.models.*
 import com.example.helpmeet.utils.MyApp
 import com.example.helpmeet.utils.Resource
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Response
@@ -46,52 +43,24 @@ class LoginViewModel(
             response.body()?.let{
                 return Resource.Success(it)
             }
-        } else /*if (response.code() == 400)*/{
+        } else {
             return try {
-                /*val gson = Gson()
-                val type = object : TypeToken<Response<Estate>>() {}.type
-                var errorResponse: Estate? = gson.fromJson(response.errorBody()?.charStream(), type)
-                val error = gson.fromJson(response.raw(), Estate::class.java)
-*/
-
-                /*val jObjError = JSONObject(response.errorBody()!!.string())
-                Log.d("vmtestes", error.estate_address[0].toString())
-                Resource.Error(jObjError.getJSONObject("estate_name").getString("message"))*/
 
                 val responseString = response.errorBody()?.string()
-                val model_list = listOf("estate_country", "estate_name", "estate_address", "estate_admin")
+                val modelList = listOf("estate_country", "estate_name", "estate_address", "estate_admin")
                 var errorStr = ""
-                for (i in model_list) {
-                    var errorString = JSONObject(responseString ?: "").toString()
-                    errorStr = errorString
-
-                    /*if(errorString.isNotEmpty() ){
-                        Log.d("vmtestes", errorString.toString())
-                        errorStr += errorString.toString()
-                    } else{
-                        continue
-                    }*/
-
+                for (i in modelList) {
+                    errorStr = JSONObject(responseString ?: "").toString()
 
                 }
 
-
-
-
-
-
                 Resource.Error(errorStr)
-                //Resource.Error(response.body().toString())
+
             } catch (e: Exception) {
-                Resource.Error("${e.message} from catchpoint boy")
+                Resource.Error("${e.message} ")
             }
-            finally {
-
-            }
-
         }
         return Resource.Error(response.message().toString())
-
     }
 
     private suspend fun safeUserRegCall(userReg: UserRegister) {
