@@ -49,7 +49,7 @@ class LoginViewModel(
                 val responseString = response.errorBody()?.string()
                 val errorStr = JSONObject(responseString ?: "").toString()
 
-                Resource.Error(errorStr)
+                Resource.Error(responseString)
 
             } catch (e: Exception) {
                 Resource.Error("${e.message} ")
