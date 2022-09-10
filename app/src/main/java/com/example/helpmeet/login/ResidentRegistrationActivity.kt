@@ -179,7 +179,7 @@ class ResidentRegistrationActivity : AppCompatActivity() {
             return
         }
 
-        var fullNameText = fullName.editText?.text.toString().trim()
+        val fullNameText = fullName.editText?.text.toString().trim()
         val emailText = email.editText?.text.toString().trim()
         val estateIdText = estateId.editText?.text.toString().trim()
         val estateNameText = estateName.editText?.text.toString().trim()
@@ -188,15 +188,16 @@ class ResidentRegistrationActivity : AppCompatActivity() {
 
 
 
-        val estateRegData = UserRegister()
+        val userRegData = UserRegister(fullNameText, emailText, estateIdText
+            , estateNameText, houseAddressText, passwordText)
 
-        viewModel.registerEstate(estateRegData)
+        viewModel.registerUser(userRegData)
 
     }
 
     private fun separateErrors(error: String) {
 
-        if (!countryCodeError(error) or !emailError(error) or !houseAddressError(error) or !estateNameError(error)) {
+        if (!emailError(error) or !houseAddressError(error) or !estateNameError(error)) {
             return
         }
 
@@ -212,6 +213,18 @@ class ResidentRegistrationActivity : AppCompatActivity() {
             false
         } else {
             email.helperText = null
+            true
+        }
+    }
+
+    private fun estateIdError(error: String): Boolean {
+        val estateIdError = "estate with this estate name already exists."
+
+        return if (error.contains(estateIdError)) {
+            estateId.helperText = estateIdError.capitaliseFirstLetter()
+            false
+        } else {
+            estateId.helperText = null
             true
         }
     }
@@ -239,19 +252,6 @@ class ResidentRegistrationActivity : AppCompatActivity() {
             true
         }
     }
-
-    private fun countryCodeError(error: String): Boolean {
-        val countryCodeError = "estate_country"
-
-        return if (error.contains(countryCodeError)) {
-            estateId.helperText = "Please enter a valid country code"
-            false
-        } else {
-            estateId.helperText = null
-            true
-        }
-    }
-
 
     private fun String.capitaliseFirstLetter(): String {
         return this.replaceFirst(this[0], this[0].uppercaseChar())
