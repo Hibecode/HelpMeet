@@ -1,6 +1,7 @@
 package com.example.helpmeet.api
 
 import com.example.helpmeet.models.Estate
+import com.example.helpmeet.models.LoginModel
 import com.example.helpmeet.models.SavedEstateDetails
 import com.example.helpmeet.models.UserRegister
 import retrofit2.Response
@@ -20,6 +21,11 @@ interface HelpMeetApi {
     suspend fun registerUser(
         @Body userRegData: UserRegister
     ): Response<UserRegister>
+
+    @POST("login/")
+    suspend fun login(
+        @Body login: LoginModel
+    ): Response<LoginModel>
 
     @GET("/api/v1/estate/all/")
     suspend fun getEstateList(

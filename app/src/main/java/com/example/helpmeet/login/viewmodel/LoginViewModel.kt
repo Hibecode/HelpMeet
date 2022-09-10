@@ -23,6 +23,7 @@ class LoginViewModel(
 
     val estateRegResponse: MutableLiveData<Resource<Estate>> = MutableLiveData()
     val userRegResponse: MutableLiveData<Resource<UserRegister>> = MutableLiveData()
+    val loginResponse: MutableLiveData<Resource<LoginModel>> = MutableLiveData()
     val estateListResponse: MutableLiveData<Response<List<SavedEstateDetails>>> = MutableLiveData()
 
     fun registerEstate(estateReg: Estate) = viewModelScope.launch {
@@ -33,9 +34,33 @@ class LoginViewModel(
         safeUserRegCall(userReg)
     }
 
+    fun login(login: LoginModel) = viewModelScope.launch {
+        safeLoginCall(login)
+    }
+
     fun getEstateList() = viewModelScope.launch {
         val response = RetrofitInstance.api.getEstateList()
         estateListResponse.value = response
+    }
+
+    private fun handleLogin(response: Response<LoginModel>): Resource<LoginModel> {
+        if(response.isSuccessful) {
+            response.body()?.let{
+                return Resource.Success(it)
+            }
+        } else {
+            //Error Response
+            return try {
+                val responseString = response.errorBody()?.string()
+                val errorString = JSONObject(responseString ?: "").toString()
+
+                Resource.Error(errorString)
+
+            } catch (e: Exception) {
+                Resource.Error("${e.message} ")
+            }
+        }
+        return Resource.Error(response.message().toString())
     }
 
     private fun handleUserReg(response: Response<UserRegister>): Resource<UserRegister> {
@@ -82,6 +107,23 @@ class LoginViewModel(
             }
         }
         return Resource.Error(response.message().toString())
+    }
+
+    private suspend fun safeLoginCall(login: LoginModel) {
+        try {
+            if (hasInternetConnection()) {
+                val response = RetrofitInstance.api.login(login)
+                loginResponse.postValue(handleLogin(response))
+
+            } else {
+                loginResponse.postValue(Resource.Error("No Internet connection"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> loginResponse.postValue(Resource.Error("Network Failure"))
+                else -> loginResponse.postValue(Resource.Error("Conversion Error"))
+            }
+        }
     }
 
     private suspend fun safeUserRegCall(userReg: UserRegister) {
